@@ -38,10 +38,16 @@ app.get('/warehouse', function(req, res) {
 });
 
 app.get('/price-check', function(req, res) {
-	let sql = 'SELECT * FROM warehouse WHERE item_name LIKE ? AND size LIKE ? AND in_store LIKE ?';
-	connection.query(sql, req.query.item, req.query.size, req.query.quantity, function(err, result) {
+	connection.query("'" + "SELECT * FROM warehouse WHERE item_name LIKE " + req.query.item + " AND size LIKE " + req.query.size + " AND in_store LIKE " + req.query.quantity + "'", function(err, result) {
 		if (err) {
 			console.log(err.toString());
+		};
+		if (req.query.quantity > ) {
+			res.send({
+				"result": "error, we don't have enough items in store";
+			});
+		} else if (req.query.quantity < 3) {
+			"result": "please order at least 3, one for yourself, two for your friends";			
 		};
 		res.send(result);
 	});
