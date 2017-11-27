@@ -1,6 +1,8 @@
 'use strict'
 
 const button = document.querySelector('button');
+const itemOptions = document.querySelectorAll('.item');
+const input = document.querySelector('input');
 
 function ajax(method, url, callback) {
   let xhr = new XMLHttpRequest();
@@ -10,6 +12,20 @@ function ajax(method, url, callback) {
   };
   xhr.send();
 };
+
+function addItemOptions(response) {
+	let name = document.querySelector('.item')
+	let itemNames = document.querySelector('option');
+	elements.forEach(element => {
+		itemNames.textContent = element.item_name;
+		name.appendChild(itemNames);
+	});
+};
+
+function addSizeOptions(response) {
+	let size = document.querySelector('.size');
+	
+}
 
 function createTable(response){
   let tableHeader = `<table>
@@ -25,7 +41,7 @@ function createTable(response){
 	let table = document.createElement('table');	
 	table.innerHTML = tableHeader;
   document.querySelector('body').appendChild(table);
-  for (let i = 0; i < response.clothes.length; i++){
+  for (let i = 0; i < response.clothes.length; i++) {
     let elements = `<td>${response.clothes[i].item_name}</td>
                     <td>${response.clothes[i].manufacturer}</td>
                     <td>${response.clothes[i].category}</td>
@@ -39,3 +55,4 @@ function createTable(response){
 };
 
 ajax('GET', '/warehouse', createTable);
+ajax('GET', '/warehouse', addItemOptions);
