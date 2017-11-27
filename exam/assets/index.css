@@ -17,3 +17,7 @@ td {
 th {
     border-bottom: 3px solid grey;
 }
+
+h1 {
+    text-align: center;
+}
