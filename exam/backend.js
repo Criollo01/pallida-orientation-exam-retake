@@ -43,7 +43,7 @@ app.get('/price-check', function(req, res) {
 		if (err) {
 			console.log(err.toString());
 		};
-		res.json(result);
+		res.send(result);
 	});
 });
 
