@@ -96,4 +96,10 @@ Return the following JSON if the quantity is smaller than 3:
 ## 2) Quiz time
 
  - What is a middleware and why it's used? (2p)
+
+Middlewares are softwares that make the communication and handling input-output much easier for the application. They help the application with services like asynchronous API calls, database calls, etc. They can execute codes, call the next middleware, change the request-response objects, or end the request-response cycle.
+Express.js is a middleware that we used the most lately. 
+
  - What's the main difference between the `onload` and the `readystatechange` provided by the `XMLHttpRequest` object? (1p)
+
+Onload only executes after every resources are loaded on the page, while readystatechange has several status properties (0, 1, 2, 3, 4), depending on what state the loading is at the time.
