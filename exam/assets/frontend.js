@@ -1,5 +1,7 @@
 'use strict'
 
+const button = document.querySelector('button');
+
 function ajax(method, url, callback) {
     let xhr = new XMLHttpRequest();
     xhr.open(method, url);
@@ -9,3 +11,22 @@ function ajax(method, url, callback) {
     xhr.send();
 };
 
+function createTable(response){
+    console.log(response);
+    let table = document.createElement('table');
+    document.querySelector('body').appendChild(table);
+    console.log(response.clothes);
+    for (let i = 0; i < response.clothes.length; i++){
+        let elements = `<td>${response.clothes[i].item_name}</td>
+                        <td>${response.clothes[i].manufacturer}</td>
+                        <td>${response.clothes[i].category}</td>
+                        <td>${response.clothes[i].size}</td>
+                        <td>${response.clothes[i].unit_price}</td>
+                        <td>${response.clothes[i].in_store}</td>`;
+        let tableRows = document.createElement('tr');
+        tableRows.innerHTML = elements;
+        table.appendChild(tableRows);
+    };
+};
+
+ajax('GET', '/warehouse', createTable);
