@@ -52,6 +52,7 @@ function createTable(response){
 };
 
 button.addEventListener('click', function(){
+	console.log(itemName.value);
 	let fullUrl = '/price-check?item=' + itemName.value + '&size=' + size.value + '&quantity=' + input.value;
 	console.log(fullUrl);
 });
