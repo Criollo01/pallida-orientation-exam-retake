@@ -14,11 +14,11 @@ function ajax(method, url, callback) {
 function createTable(response){
   let tableHeader = `<table>
                         <tr>
-                        	<th>Licence plate</th>
-                          <th>Brand</th>
-                          <th>Model</th>
-                        	<th>Color</th>
-													<th>Year</th>
+                        	<th>Item name</th>
+                          <th>Manufacturer</th>
+                          <th>Category</th>
+                        	<th>Size</th>
+													<th>Price</th>
 													<th>In store</th>					
                         </tr>
 										</table>`
