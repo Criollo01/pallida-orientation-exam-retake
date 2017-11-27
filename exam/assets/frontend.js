@@ -51,10 +51,18 @@ function createTable(response){
   };
 };
 
+function listItems(res) {
+	console.log(res);
+	res.data.forEach(function(elements) {
+		let div = document.createElement('div');
+		div.innerHTML += `<li>${elements.item_name}</li>`;
+	});
+};
+
 button.addEventListener('click', function(){
-	console.log(itemName.value);
 	let fullUrl = '/price-check?item=' + itemName.value + '&size=' + size.value + '&quantity=' + input.value;
 	console.log(fullUrl);
+	ajax('GET', fullUrl, listItems);
 });
 
 ajax('GET', '/warehouse', createTable);
