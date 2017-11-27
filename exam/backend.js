@@ -38,7 +38,13 @@ app.get('/warehouse', function(req, res) {
 });
 
 app.get('/price-check', function(req, res) {
-	
+	let sql = 'SELECT item_name, size, unit_price, in_store FROM warehouse';
+	connection.query(sql, function(err, result) {
+		if (err) {
+			console.log(err.toString());
+		};
+		res.json(result);
+	});
 });
 
 app.listen(3000, () => console.log('server is ok'));
