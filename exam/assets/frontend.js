@@ -1,8 +1,9 @@
 'use strict'
 
 const button = document.querySelector('button');
-const itemOptions = document.querySelectorAll('.item');
 const input = document.querySelector('input');
+const itemName = document.querySelectorAll('.item');
+const size = document.querySelectorAll('.size');
 
 function ajax(method, url, callback) {
   let xhr = new XMLHttpRequest();
@@ -13,19 +14,15 @@ function ajax(method, url, callback) {
   xhr.send();
 };
 
+/*
 function addItemOptions(response) {
-	let name = document.querySelector('.item')
+	let name = document.querySelector('.item_name')
 	let itemNames = document.querySelector('option');
 	elements.forEach(element => {
 		itemNames.textContent = element.item_name;
 		name.appendChild(itemNames);
 	});
-};
-
-function addSizeOptions(response) {
-	let size = document.querySelector('.size');
-	
-}
+};*/
 
 function createTable(response){
   let tableHeader = `<table>
@@ -54,5 +51,9 @@ function createTable(response){
   };
 };
 
+button.addEventListener('click', function(){
+	let fullUrl = '/price-check?item=' + itemName.value + '&size=' + size.value + '&quantity=' + input.value;
+	console.log(fullUrl);
+});
+
 ajax('GET', '/warehouse', createTable);
-ajax('GET', '/warehouse', addItemOptions);
