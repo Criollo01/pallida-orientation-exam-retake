@@ -38,8 +38,8 @@ app.get('/warehouse', function(req, res) {
 });
 
 app.get('/price-check', function(req, res) {
-	let sql = 'SELECT item_name, size, unit_price, in_store FROM warehouse';
-	connection.query(sql, function(err, result) {
+	let sql = 'SELECT * FROM warehouse WHERE item_name LIKE ? AND size LIKE ? AND in_store LIKE ?';
+	connection.query(sql, req.query.item, req.query.size, req.query.quantity, function(err, result) {
 		if (err) {
 			console.log(err.toString());
 		};
